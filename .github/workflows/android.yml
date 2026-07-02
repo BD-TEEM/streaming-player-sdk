@@ -20,11 +20,17 @@ jobs:
         distribution: 'temurin'
         cache: gradle
 
+    # করাপ্ট হওয়া wrapper jar ফাইলটি ফিক্স করার কমান্ড
+    - name: Download Fresh Gradle Wrapper Jar
+      run: |
+        mkdir -p gradle/wrapper
+        curl -Lo gradle/wrapper/gradle-wrapper.jar https://github.com/gradle/gradle/raw/v8.1.1/gradle/wrapper/gradle-wrapper.jar
+
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
       
     - name: Build with Gradle
-      run: ./gradlew assembleDebug
+      run: ./gradlew assembleDebug --stacktrace
 
     - name: Upload APK
       uses: actions/upload-artifact@v4
