@@ -7,8 +7,13 @@ public class M3uSource {
     private String name;
 
     @SerializedName("url")
-    private String url; // এখানে .m3u8 বা .mp4 লিংক থাকবে
+    private String url;
 
-    public String getName() { return name; }
-    public String getUrl() { return url; }
+    public String getName() { 
+        return name != null ? name : "Unknown Channel"; 
+    }
+    
+    public String getUrl() { 
+        return url; 
+    }
 }
