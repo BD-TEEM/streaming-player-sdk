@@ -1,16 +1,12 @@
 package com.mox_flim.me;
 
+import java.util.List;
 import retrofit2.Call;
 import retrofit2.http.GET;
-import retrofit2.http.Query;
 
 public interface ApiService {
-    
-    // মুভির তালিকা নিয়ে আসার এন্ডপয়েন্ট
-    @GET("movie/popular")
-    Call<MovieResponse> getPopularMovies(
-        @Query("api_key") String apiKey,
-        @Query("page") int page
-    );
+    // আপনার নিজস্ব m3u/m3u8 এপিআই লিংক (উদাহরণস্বরূপ: "playlist.json")
+    @GET("path/to/your/m3u/api.json")
+    Call<List<M3uSource>> getStreamingSources();
 }
 
